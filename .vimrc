@@ -189,3 +189,4 @@ set statusline+=\ MODE:\ %1*%{FindMode(mode())}%*\ -
 set statusline+=\ %c%V:%l/%L[%p%%]
 
 hi User1 cterm=bold
+autocmd vimenter * if !argc() | NERDTree | endif
