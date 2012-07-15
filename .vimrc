@@ -190,3 +190,9 @@ set statusline+=\ %c%V:%l/%L[%p%%]
 
 hi User1 cterm=bold
 autocmd vimenter * if !argc() | NERDTree | endif
+
+" Map some keys for easier tab usage
+map <S-h> :tabfirst<CR>
+map <S-j> :tabprevious<CR>
+map <S-k> :tabnext<CR>
+map <S-l> :tablast<CR>
