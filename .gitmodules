@@ -58,3 +58,6 @@
 [submodule ".vim/bundle/vim-mou"]
 	path = .vim/bundle/vim-mou
 	url = git://github.com/vim-scripts/vim-mou.git
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
