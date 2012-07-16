@@ -198,3 +198,6 @@ map <S-h> :tabfirst<CR>
 map <S-j> :tabprevious<CR>
 map <S-k> :tabnext<CR>
 map <S-l> :tablast<CR>
+
+" Map for nerd tree - to control n in normal mode
+nmap <silent> <c-n> :NERDTreeToggle<CR>
