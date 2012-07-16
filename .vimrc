@@ -81,7 +81,9 @@ endif
 
 call pathogen#infect()
 
-set wrap
+set backupdir=~/.vim/backup
+
+set nowrap
 set autoindent
 set smartindent
 set tabstop=2
