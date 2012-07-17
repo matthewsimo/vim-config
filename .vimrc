@@ -137,7 +137,7 @@ autocmd WinLeave * setlocal nocursorline
 set magic
 set showmatch
 set noerrorbells
-
+set hlsearch
 
 " Delete Trailing white space on save
 func! DeleteTrailingWS()
