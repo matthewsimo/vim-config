@@ -83,15 +83,19 @@ call pathogen#infect()
 
 set backupdir=~/.vim/backup
 
-set nowrap
+"set nowrap
 set autoindent
 set smartindent
 set tabstop=2
 set shiftwidth=2
 set expandtab
 set number
+set nofoldenable
 set smarttab
 set cmdheight=2
+set copyindent
+"let &showbreak=repeat('  ', IndentLevel(line('.')))
+"let &showbreak=repeat('  ', IndentLevel(line('.'))+1)
 
 "syntax highlighting & solarized config
 syntax on
@@ -139,6 +143,23 @@ set showmatch
 set noerrorbells
 set hlsearch
 
+" Get Indent Level Utility Function
+function! IndentLevel(...)
+  if a:0 > 0
+    return indent(a:1) / &shiftwidth
+  else
+    return indent(line('.'))
+  endif
+endfunction
+
+" Calculate Wrapped lines Indent Levels
+" function! CalcWrapIndents()
+"
+" endfunction
+"
+" autocmd BufEnter *.* :call CalcWrapIndents()
+
+
 " Delete Trailing white space on save
 func! DeleteTrailingWS()
   exe "normal mz"
@@ -154,7 +175,6 @@ autocmd BufReadPost *
   \ endif
 " Remember info about open buggers on close
 set viminfo^=%
-
 
 " Returns true if paste mode is enabled
 function! HasPaste()

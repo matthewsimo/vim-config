@@ -55,9 +55,6 @@
 [submodule ".vim/bundle/zencoding.vim"]
 	path = .vim/bundle/zencoding.vim
 	url = git://github.com/vim-scripts/ZenCoding.vim.git
-[submodule ".vim/bundle/vim-mou"]
-	path = .vim/bundle/vim-mou
-	url = git://github.com/vim-scripts/vim-mou.git
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
