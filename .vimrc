@@ -1,5 +1,5 @@
 " Maintainer:	Matthew Simo <matthew.a.simo@gmail.com>
-" Last change: 2012 07 15
+" Last change: 2012 08 28
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -143,38 +143,60 @@ set showmatch
 set noerrorbells
 set hlsearch
 
-" Get Indent Level Utility Function
-function! IndentLevel(...)
-  if a:0 > 0
-    return indent(a:1) / &shiftwidth
-  else
-    return indent(line('.'))
-  endif
-endfunction
-
-" Calculate Wrapped lines Indent Levels
-" function! CalcWrapIndents()
-"
-" endfunction
-"
-" autocmd BufEnter *.* :call CalcWrapIndents()
 
 
-" Delete Trailing white space on save
+" Always show the status line
+set laststatus=2
+
+" Format the status line
+set statusline =
+set statusline+=\ %{HasPaste()}%f%m%r%h\ %w
+set statusline+=\ \ CWD:\ %r%{getcwd()}%h
+set statusline+=\%=
+set statusline+=\ MODE:\ %1*%{FindMode(mode())}%*\ -
+set statusline+=\ %c%V:%l/%L[%p%%]
+
+hi User1 cterm=bold
+autocmd vimenter * if !argc() | NERDTree | endif
+
+
+" ========================================
+" Custom Commands
+" ========================================
+
+" Map some keys for easier tab usage
+map <S-h> :tabfirst<CR>
+map <S-j> :tabprevious<CR>
+map <S-k> :tabnext<CR>
+map <S-l> :tablast<CR>
+
+" Map for nerd tree - to control n in normal mode
+nmap <silent> <c-n> :NERDTreeToggle<CR>
+
+" Map for Search/Replate Trailing White space
+map ,s :call DeleteTrailingWS()<CR>
+
+
+" ========================================
+" Custom Commands
+" ========================================
+
+" Highlight trailing white space for find/replace
 func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
+  exec ':%s/ \+$//gc'
 endfunc
-autocmd BufWrite *.* :call DeleteTrailingWS()
+
 
 " Return to last edit position when opening files
 autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
   \   exe "normal! g`\"" |
   \ endif
+
+
 " Remember info about open buggers on close
 set viminfo^=%
+
 
 " Returns true if paste mode is enabled
 function! HasPaste()
@@ -183,6 +205,7 @@ function! HasPaste()
   endif
   return ''
 endfunction
+
 
 "Return Mode Based on Mode ID Char
 function! FindMode(mode_char)
@@ -199,25 +222,5 @@ function! FindMode(mode_char)
   endif
 endfunction
 
-" Always show the status line
-set laststatus=2
 
-" Format the status line
-set statusline =
-set statusline+=\ %{HasPaste()}%f%m%r%h\ %w
-set statusline+=\ \ CWD:\ %r%{getcwd()}%h
-set statusline+=\%=
-set statusline+=\ MODE:\ %1*%{FindMode(mode())}%*\ -
-set statusline+=\ %c%V:%l/%L[%p%%]
-
-hi User1 cterm=bold
-autocmd vimenter * if !argc() | NERDTree | endif
-
-" Map some keys for easier tab usage
-map <S-h> :tabfirst<CR>
-map <S-j> :tabprevious<CR>
-map <S-k> :tabnext<CR>
-map <S-l> :tablast<CR>
-
-" Map for nerd tree - to control n in normal mode
-nmap <silent> <c-n> :NERDTreeToggle<CR>
+" ========================================
