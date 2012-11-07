@@ -142,19 +142,25 @@ set magic
 set showmatch
 set noerrorbells
 set hlsearch
+set paste
 
 
-
-" Always show the status line
+" Always show the status line @ 2 lines
 set laststatus=2
 
 " Format the status line
-set statusline =
-set statusline+=\ %{HasPaste()}%f%m%r%h\ %w
-set statusline+=\ \ CWD:\ %r%{getcwd()}%h
-set statusline+=\%=
-set statusline+=\ MODE:\ %1*%{FindMode(mode())}%*\ -
-set statusline+=\ %c%V:%l/%L[%p%%]
+set statusline = " Left Side stuff - start status line
+set statusline+=\ %f " {file name}
+set statusline+=\ %y " {file type}
+set statusline+=\ %m " {modified flag} 
+set statusline+=\ %r " {read only flag}
+set statusline+=\ %h " {help buffer flag}
+set statusline+=\ %w " {preview bugger flag}
+set statusline+=\ \ CWD:\ %{getcwd()} " CWD stuff - limited to 4 directories or 40 characters, which ever comes first
+set statusline+=\%= " Move to the right align stuff
+set statusline+=\ %{HasPaste()} " Check if it's in paste mode - if so, output [paste mode]
+set statusline+=\ %1*%{FindMode(mode())}%*\ " Mode notification bit
+set statusline+=\ %4.6c:%l/%L[%p%%]\  " Set column:CurrentLine/TotalLines[Percentage]
 
 hi User1 cterm=bold
 autocmd vimenter * if !argc() | NERDTree | endif
@@ -201,7 +207,7 @@ set viminfo^=%
 " Returns true if paste mode is enabled
 function! HasPaste()
   if &paste
-    return 'PASTE MODE  '
+    return '[paste mode]'
   endif
   return ''
 endfunction
