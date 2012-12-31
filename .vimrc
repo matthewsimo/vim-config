@@ -1,6 +1,11 @@
 " Maintainer:	Matthew Simo <matthew.a.simo@gmail.com>
 " Last change: 2012 08 28
 
+
+" ========================================
+" General Set up
+" ========================================
+
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
   finish
@@ -67,7 +72,8 @@ if has("autocmd")
 
 else
 
-  set autoindent		" always set autoindenting on
+  " always set autoindenting on
+  set autoindent		
 
 endif " has("autocmd")
 
@@ -79,11 +85,18 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
+" Call pathogen
 call pathogen#infect()
 
+
+" ========================================
+" Personal Settings
+" ========================================
+
+" Set where backups go
 set backupdir=~/.vim/backup
 
-"set nowrap
+" Personal flavor
 set autoindent
 set smartindent
 set tabstop=2
@@ -94,13 +107,16 @@ set nofoldenable
 set smarttab
 set cmdheight=2
 set copyindent
-"let &showbreak=repeat('  ', IndentLevel(line('.')))
-"let &showbreak=repeat('  ', IndentLevel(line('.'))+1)
+set magic
+set showmatch
+set noerrorbells
+set hlsearch
+set paste
 
-"syntax highlighting & solarized config
+
+" syntax highlighting & solarized config
 syntax on
 let &t_Co=256
-"let g:solarized_termcolors=256
 let g:solarized_degrade=0
 let g:solarized_italic=1
 let g:solarized_bold=1
@@ -108,7 +124,7 @@ let g:solarized_underline=1
 colorscheme solarized
 set background=dark
 
-" Set Indicator for various modes
+" Status Line Utility Function
 function! InsertStatuslineColor(mode)
 	if a:mode == 'i'
 		hi statusline cterm=NONE ctermbg=DarkBlue ctermfg=Black
@@ -123,6 +139,7 @@ function! InsertStatuslineColor(mode)
   endif
 endfunction
 
+" Set Indicator for various modes
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
 au InsertLeave * hi statusline cterm=NONE ctermbg=DarkYellow ctermfg=Black
 
@@ -131,24 +148,16 @@ au InsertLeave * hi statusline cterm=NONE ctermbg=DarkYellow ctermfg=Black
 hi statusline cterm=NONE ctermbg=DarkYellow ctermfg=Black
 " Default the statusline to white in Not Current windows
 hi StatusLineNC cterm=NONE ctermfg=Gray ctermbg=Black
+
+
 " Default Cursor line in current window only.
 set cursorline
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
-"hi CursorLine cterm=NONE ctermbg=DarkGreen ctermfg=White
 
-
-set magic
-set showmatch
-set noerrorbells
-set hlsearch
-set paste
-
-
-" Always show the status line @ 2 lines
-set laststatus=2
 
 " Format the status line
+set laststatus=2
 set statusline = " Left Side stuff - start status line
 set statusline+=\ %f " {file name}
 set statusline+=\ %y " {file type}
@@ -166,42 +175,17 @@ hi User1 cterm=bold
 autocmd vimenter * if !argc() | NERDTree | endif
 
 
+" Define Map Leader
+:let mapleader = "-"
+
 " ========================================
-" Custom Commands
-" ========================================
-
-" Map some keys for easier tab usage
-map <S-h> :tabfirst<CR>
-map <S-j> :tabprevious<CR>
-map <S-k> :tabnext<CR>
-map <S-l> :tablast<CR>
-
-" Map for nerd tree - to control n in normal mode
-nmap <silent> <c-n> :NERDTreeToggle<CR>
-
-" Map for Search/Replate Trailing White space
-map ,s :call DeleteTrailingWS()<CR>
-
-command C let @/=""
-" ========================================
-" Custom Commands
+" Utility Functions
 " ========================================
 
 " Highlight trailing white space for find/replace
 func! DeleteTrailingWS()
   exec ':%s/ \+$//gc'
 endfunc
-
-
-" Return to last edit position when opening files
-autocmd BufReadPost *
-  \ if line("'\"") > 0 && line("'\"") <= line("$") |
-  \   exe "normal! g`\"" |
-  \ endif
-
-
-" Remember info about open buggers on close
-set viminfo^=%
 
 
 " Returns true if paste mode is enabled
@@ -229,10 +213,47 @@ function! FindMode(mode_char)
 endfunction
 
 
+
+
+" ========================================
+" Custom Commands
 " ========================================
 
-" Visual * - Search for selected text * = next # = prev
+" Quick Edit for .vimrc
+:nnoremap <leader>ev :split $MYVIMRC<cr>
 
+
+" Map some keys for easier tab usage
+map <S-h> :tabfirst<CR>
+map <S-j> :tabprevious<CR>
+map <S-k> :tabnext<CR>
+map <S-l> :tablast<CR>
+
+
+" Map for nerd tree - to control n in normal mode
+nmap <silent> <c-n> :NERDTreeToggle<CR>
+
+
+" Map for Search/Replate Trailing White space
+map ,s :call DeleteTrailingWS()<CR>
+
+
+" Reset current search
+command C let @/=""
+
+
+" Return to last edit position when opening files
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
+
+
+" Remember info about open buggers on close
+set viminfo^=%
+
+
+" Visual * - Search for selected text * = next # = prev
 " Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
   \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
@@ -245,6 +266,5 @@ vnoremap <silent> # :<C-U>
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
 
-" ========================================
 
 let disable_lint = 1
