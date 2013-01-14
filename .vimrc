@@ -124,25 +124,6 @@ let g:solarized_underline=1
 colorscheme solarized
 set background=dark
 
-" Status Line Utility Function
-function! InsertStatuslineColor(mode)
-	if a:mode == 'i'
-		hi statusline cterm=NONE ctermbg=DarkBlue ctermfg=Black
-	elseif a:mode == 'r' || 'Rv'
-		hi statusline cterm=NONE ctermbg=DarkRed ctermfg=White
-  elseif a:mode == 'v' || 'V'
-    hi statusline cterm=NONE ctermbg=Cyan ctermfg=Black
-  elseif a:mode == 'c' || 'cv' || 'ce'
-    hi statusline cterm=NONE ctermbg=Black ctermfg=White
-  else
-    hi statusline cterm=NONE ctermbg=DarkYellow ctermfg=Black
-  endif
-endfunction
-
-" Set Indicator for various modes
-au InsertEnter * call InsertStatuslineColor(v:insertmode)
-au InsertLeave * hi statusline cterm=NONE ctermbg=DarkYellow ctermfg=Black
-
 
 " Default the statusline to Black on grey when entering vimrc
 hi statusline cterm=NONE ctermbg=DarkYellow ctermfg=Black
@@ -178,13 +159,22 @@ autocmd vimenter * if !argc() | NERDTree | endif
 " Define Map Leader
 :let mapleader = "-"
 
+
+" Remember info about open buggers on close
+set viminfo^=%
+
+
+" Disable lint
+let disable_lint = 1
+
+
 " ========================================
-" Utility Functions
+" Utility Functions & Custom Commands
 " ========================================
 
 " Highlight trailing white space for find/replace
 func! DeleteTrailingWS()
-  exec ':%s/ \+$//gc'
+  %s/\s\+$//e
 endfunc
 
 
@@ -213,29 +203,24 @@ function! FindMode(mode_char)
 endfunction
 
 
+" Status Line Utility Function
+function! InsertStatuslineColor(mode)
+	if a:mode == 'i'
+		hi statusline cterm=NONE ctermbg=DarkBlue ctermfg=Black
+	elseif a:mode == 'r' || 'Rv'
+		hi statusline cterm=NONE ctermbg=DarkRed ctermfg=White
+  elseif a:mode == 'v' || 'V'
+    hi statusline cterm=NONE ctermbg=Cyan ctermfg=Black
+  elseif a:mode == 'c' || 'cv' || 'ce'
+    hi statusline cterm=NONE ctermbg=Black ctermfg=White
+  else
+    hi statusline cterm=NONE ctermbg=DarkYellow ctermfg=Black
+  endif
+endfunction
 
-
-" ========================================
-" Custom Commands
-" ========================================
-
-" Quick Edit for .vimrc
-:nnoremap <leader>ev :split $MYVIMRC<cr>
-
-
-" Map some keys for easier tab usage
-map <S-h> :tabfirst<CR>
-map <S-j> :tabprevious<CR>
-map <S-k> :tabnext<CR>
-map <S-l> :tablast<CR>
-
-
-" Map for nerd tree - to control n in normal mode
-nmap <silent> <c-n> :NERDTreeToggle<CR>
-
-
-" Map for Search/Replate Trailing White space
-map ,s :call DeleteTrailingWS()<CR>
+" Set Indicator for various modes
+au InsertEnter * call InsertStatuslineColor(v:insertmode)
+au InsertLeave * hi statusline cterm=NONE ctermbg=DarkYellow ctermfg=Black
 
 
 " Reset current search
@@ -247,10 +232,6 @@ autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
   \   exe "normal! g`\"" |
   \ endif
-
-
-" Remember info about open buggers on close
-set viminfo^=%
 
 
 " Visual * - Search for selected text * = next # = prev
@@ -267,4 +248,34 @@ vnoremap <silent> # :<C-U>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 
-let disable_lint = 1
+" ========================================
+" Custom Mappings
+" ========================================
+
+" Quick Edit for .vimrc
+:nnoremap <leader>ev :split $MYVIMRC<cr>
+
+" Source Vim
+:nnoremap <leader>sv :source $MYVIMRC<cr>
+
+
+" Map some keys for easier tab usage
+map <S-h> :tabfirst<CR>
+map <S-j> :tabprevious<CR>
+map <S-k> :tabnext<CR>
+map <S-l> :tablast<CR>
+
+
+" Map for nerd tree - to control n in normal mode
+nmap <silent> <c-n> :NERDTreeToggle<CR>
+
+
+" Map for Search/Replate Trailing White space
+map <leader>ws :call DeleteTrailingWS()<CR>
+
+
+" ========================================
+" Custom Abbreviations
+" ========================================
+
+
