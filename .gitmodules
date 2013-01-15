@@ -66,4 +66,4 @@
 	url = git://github.com/scrooloose/syntastic.git
 [submodule ".vim/bundle/vim-powerline"]
 	path = .vim/bundle/vim-powerline
-	url = git://github.com/skwp/vim-powerline.git
+	url = git://github.com/matthewsimo/vim-powerline.git
