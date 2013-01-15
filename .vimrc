@@ -96,22 +96,44 @@ call pathogen#infect()
 " Set where backups go
 set backupdir=~/.vim/backup
 
+set noswapfile
+
+
 " Personal flavor
+
+set number
+set hidden
+
+" Indents
 set autoindent
 set smartindent
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set number
-set nofoldenable
 set smarttab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+
+" Folding
+set foldmethod=indent
+set foldnestmax=3
+set nofoldenable
 set cmdheight=2
-set copyindent
+
+filetype plugin on
+filetype indent on
+
+set nowrap
 set magic
 set showmatch
 set noerrorbells
+set incsearch
 set hlsearch
 set paste
+
+" Scrolling
+set scrolloff=10
+set sidescrolloff=15
+set sidescroll=1
 
 
 " syntax highlighting & solarized config
@@ -124,12 +146,30 @@ let g:solarized_underline=1
 colorscheme solarized
 set background=dark
 
+
 " Default Cursor line in current window only.
 set cursorline
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
 
+
+" Nerd Tree
 autocmd vimenter * if !argc() | NERDTree | endif
+
+
+" Command mode completion
+set wildmode=list:longest
+set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildignore+=*vim/backups*
+set wildignore+=*sass-cache*
+set wildignore+=*DS_Store*
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif
 
 
 " Define Map Leader
@@ -143,14 +183,17 @@ set viminfo^=%
 " Disable lint
 :let disable_lint = 1
 
+
 set laststatus=2
 let g:Powerline_symbols='fancy'
 let g:Powerline_theme='skwp'
 let g:Powerline_colorscheme='skwp'
 
+
 " ========================================
 " Utility Functions & Custom Commands
 " ========================================
+
 
 " Highlight trailing white space for find/replace
 func! DeleteTrailingWS()
@@ -187,8 +230,10 @@ vnoremap <silent> # :<C-U>
 " Custom Mappings
 " ========================================
 
+
 " Quick Edit for .vimrc
 :nnoremap <leader>ev :split $MYVIMRC<cr>
+
 
 " Source Vim
 :nnoremap <leader>sv :source $MYVIMRC<cr>
