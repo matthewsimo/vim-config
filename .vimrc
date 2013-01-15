@@ -1,5 +1,4 @@
 " Maintainer:	Matthew Simo <matthew.a.simo@gmail.com>
-" Last change: 2012 08 28
 
 
 " ========================================
@@ -93,6 +92,7 @@ call pathogen#infect()
 " Personal Settings
 " ========================================
 
+
 " Set where backups go
 set backupdir=~/.vim/backup
 
@@ -124,35 +124,11 @@ let g:solarized_underline=1
 colorscheme solarized
 set background=dark
 
-
-" Default the statusline to Black on grey when entering vimrc
-hi statusline cterm=NONE ctermbg=DarkYellow ctermfg=Black
-" Default the statusline to white in Not Current windows
-hi StatusLineNC cterm=NONE ctermfg=Gray ctermbg=Black
-
-
 " Default Cursor line in current window only.
 set cursorline
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
 
-
-" Format the status line
-set laststatus=2
-set statusline = " Left Side stuff - start status line
-set statusline+=\ %f " {file name}
-set statusline+=\ %y " {file type}
-set statusline+=\ %m " {modified flag} 
-set statusline+=\ %r " {read only flag}
-set statusline+=\ %h " {help buffer flag}
-set statusline+=\ %w " {preview bugger flag}
-set statusline+=\ \ CWD:\ %{getcwd()} " CWD stuff - limited to 4 directories or 40 characters, which ever comes first
-set statusline+=\%= " Move to the right align stuff
-set statusline+=\ %{HasPaste()} " Check if it's in paste mode - if so, output [paste mode]
-set statusline+=\ %1*%{FindMode(mode())}%*\ " Mode notification bit
-set statusline+=\ %4.6c:%l/%L[%p%%]\  " Set column:CurrentLine/TotalLines[Percentage]
-
-hi User1 cterm=bold
 autocmd vimenter * if !argc() | NERDTree | endif
 
 
@@ -165,8 +141,12 @@ set viminfo^=%
 
 
 " Disable lint
-let disable_lint = 1
+:let disable_lint = 1
 
+set laststatus=2
+let g:Powerline_symbols='fancy'
+let g:Powerline_theme='skwp'
+let g:Powerline_colorscheme='skwp'
 
 " ========================================
 " Utility Functions & Custom Commands
@@ -178,53 +158,8 @@ func! DeleteTrailingWS()
 endfunc
 
 
-" Returns true if paste mode is enabled
-function! HasPaste()
-  if &paste
-    return '[paste mode]'
-  endif
-  return ''
-endfunction
-
-
-"Return Mode Based on Mode ID Char
-function! FindMode(mode_char)
-	if a:mode_char == 'n'
-    return ' NORMAL '
-  elseif a:mode_char == 'v' || a:mode_char == 'V'
-    return ' VISUAL '
-  elseif a:mode_char == 'i'
-    return ' INSERT '
-  elseif a:mode_char == 'R' || a:mode_char == 'Rv'
-    return ' REPLACE '
-  else
-    return a:mode_char
-  endif
-endfunction
-
-
-" Status Line Utility Function
-function! InsertStatuslineColor(mode)
-	if a:mode == 'i'
-		hi statusline cterm=NONE ctermbg=DarkBlue ctermfg=Black
-	elseif a:mode == 'r' || 'Rv'
-		hi statusline cterm=NONE ctermbg=DarkRed ctermfg=White
-  elseif a:mode == 'v' || 'V'
-    hi statusline cterm=NONE ctermbg=Cyan ctermfg=Black
-  elseif a:mode == 'c' || 'cv' || 'ce'
-    hi statusline cterm=NONE ctermbg=Black ctermfg=White
-  else
-    hi statusline cterm=NONE ctermbg=DarkYellow ctermfg=Black
-  endif
-endfunction
-
-" Set Indicator for various modes
-au InsertEnter * call InsertStatuslineColor(v:insertmode)
-au InsertLeave * hi statusline cterm=NONE ctermbg=DarkYellow ctermfg=Black
-
-
 " Reset current search
-command C let @/=""
+command! C let @/=""
 
 
 " Return to last edit position when opening files
@@ -271,7 +206,7 @@ nmap <silent> <c-n> :NERDTreeToggle<CR>
 
 
 " Map for Search/Replate Trailing White space
-map <leader>ws :call DeleteTrailingWS()<CR>
+:nnoremap <leader>ws :call DeleteTrailingWS()<CR>
 
 
 " ========================================
