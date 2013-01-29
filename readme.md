@@ -6,7 +6,7 @@ Should be stated, I'm runnning vim via terminal, not a gui.
 
 Should also probably be stated, that I'm running solarized in terminal too. Noticed that even though the soloraized color mode for terminal worked fine I still had to manually set the colors 0-15 to what soloraized has set. Only then could I get my vim solarized color mode working properly.
 
-See .gitmodules for submodules I'm using for vim plugins.
+See .gitmodules for submodules I'm using for [vim plugins](https://github.com/matthewsimo/vim-config/tree/master/.vim/bundle).
 
 ### My vim looks like:
 
