@@ -10,5 +10,5 @@ See .gitmodules for submodules I'm using for vim plugins.
 
 ### My vim looks like:
 
-![Vim-screenshot](http://mas.im/MXLB)
-![Vim-screenshot2](http://mas.im/MW2y)
+![Vim-screenshot](http://f.cl.ly/items/0D180K0U220c3u1T0Y0S/Screen%20Shot%202013-01-29%20at%203.43.47%20PM.png)
+![Vim-screenshot2](http://f.cl.ly/items/3v2k2H3u0x1i3S0J2g1z/Screen%20Shot%202013-01-29%20at%203.41.45%20PM.png)
