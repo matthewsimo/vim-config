@@ -147,6 +147,10 @@ colorscheme solarized
 set background=dark
 
 
+" Set sign column clear
+highlight clear SignColumn
+
+
 " Default Cursor line in current window only.
 set cursorline
 autocmd WinEnter * setlocal cursorline
