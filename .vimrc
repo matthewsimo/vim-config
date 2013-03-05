@@ -172,6 +172,10 @@ set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 
 
+" Set GitGutter on!
+let g:gitgutter_enabled = 1
+
+
 " Define Map Leader
 :let mapleader = "-"
 
@@ -253,6 +257,17 @@ nmap <silent> <c-n> :NERDTreeToggle<CR>
 " Map for Search/Replate Trailing White space
 :nnoremap <leader>ws :call DeleteTrailingWS()<CR>
 
+" Toggle GitGutter
+:nnoremap <leader><Tab> :ToggleGitGutter<CR>
+
+" Toggle GitGutter line highlighting
+:nnoremap <leader>hl :ToggleGitGutterLineHighlights<CR>
+
+" GitGutter Next hunk ~ hubba hubba
+:nnoremap <leader>n :GitGutterNextHunk<CR>
+
+" GitGutter prev hunk
+:nnoremap <leader>N :GitGutterPrevHunk<CR>
 
 " ========================================
 " Custom Abbreviations
