@@ -198,6 +198,9 @@ let g:Powerline_theme='skwp'
 let g:Powerline_colorscheme='skwp'
 
 
+" Match settings
+set matchpairs+=<:>     " specially for html
+
 " ========================================
 " Utility Functions & Custom Commands
 " ========================================
