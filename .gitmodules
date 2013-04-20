@@ -52,9 +52,6 @@
 [submodule ".vim/bundle/lint.vim"]
 	path = .vim/bundle/lint.vim
 	url = git://github.com/vim-scripts/lint.vim.git
-[submodule ".vim/bundle/zencoding.vim"]
-	path = .vim/bundle/zencoding.vim
-	url = git://github.com/vim-scripts/ZenCoding.vim.git
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
