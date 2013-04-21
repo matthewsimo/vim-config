@@ -128,7 +128,6 @@ set showmatch
 set noerrorbells
 set incsearch
 set hlsearch
-set paste
 
 " Scrolling
 set scrolloff=10
@@ -197,10 +196,19 @@ let g:Powerline_symbols='fancy'
 let g:Powerline_theme='skwp'
 let g:Powerline_colorscheme='skwp'
 
-
+:set nopaste
 " Match settings
 set matchpairs+=<:>     " specially for html
 
+let g:UltiSnipsSnippetsDir="~/.vim/bundle/ultisnips/Ultisnips"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
+let g:UltiSnipsListSnippets ="<s-space>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+
+  
 " ========================================
 " Utility Functions & Custom Commands
 " ========================================
@@ -248,6 +256,10 @@ vnoremap <silent> # :<C-U>
 
 " Source Vim
 :nnoremap <leader>sv :source $MYVIMRC<cr>
+
+
+" Edit Snippets for this file type
+:nnoremap <leader>es :UltiSnipsEdit<cr>
 
 
 " Map some keys for easier tab usage
