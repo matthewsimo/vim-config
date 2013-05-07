@@ -134,6 +134,10 @@ set scrolloff=10
 set sidescrolloff=15
 set sidescroll=1
 
+" Toggle Paste Mode & auto unset when leaving insert mode
+map <Leader>p :set invpaste<CR>:set paste?<CR>
+set pastetoggle=<Leader>p
+au InsertLeave * set nopaste
 
 " syntax highlighting & solarized config
 syntax on
