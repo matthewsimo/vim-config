@@ -64,3 +64,6 @@
 [submodule ".vim/bundle/ultisnips"]
 	path = .vim/bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips
+[submodule ".vim/angular-snippets"]
+	path = .vim/angular-snippets
+	url = git@github.com:matthewsimo/angular-vim-ultisnips.git

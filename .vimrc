@@ -205,7 +205,7 @@ let g:Powerline_colorscheme='skwp'
 set matchpairs+=<:>     " specially for html
 
 let g:UltiSnipsSnippetsDir="~/.vim/bundle/ultisnips/Ultisnips"
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets", "angular-snippets"]
 let g:UltiSnipsListSnippets ="<s-space>"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
