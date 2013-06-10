@@ -134,10 +134,6 @@ set scrolloff=10
 set sidescrolloff=15
 set sidescroll=1
 
-" Toggle Paste Mode & auto unset when leaving insert mode
-map <Leader>p :set invpaste<CR>:set paste?<CR>
-set pastetoggle=<Leader>p
-au InsertLeave * set nopaste
 
 " syntax highlighting & solarized config
 syntax on
@@ -200,7 +196,6 @@ let g:Powerline_symbols='fancy'
 let g:Powerline_theme='skwp'
 let g:Powerline_colorscheme='skwp'
 
-:set nopaste
 " Match settings
 set matchpairs+=<:>     " specially for html
 
@@ -291,6 +286,12 @@ nmap <silent> <c-n> :NERDTreeToggle<CR>
 
 " GitGutter prev hunk
 :nnoremap <leader>N :GitGutterPrevHunk<CR>
+
+
+" Toggle Paste Mode & auto unset when leaving insert mode
+:nnoremap <leader>v :set paste!<CR>i
+au InsertLeave * set nopaste
+
 
 " ========================================
 " Custom Abbreviations
