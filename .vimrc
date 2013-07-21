@@ -201,7 +201,6 @@ set matchpairs+=<:>     " specially for html
 
 let g:UltiSnipsSnippetsDir="~/.vim/bundle/ultisnips/Ultisnips"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets", "angular-snippets"]
-let g:UltiSnipsListSnippets ="<s-space>"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
@@ -279,7 +278,7 @@ nmap <silent> <c-n> :NERDTreeToggle<CR>
 :nnoremap <leader><Tab> :ToggleGitGutter<CR>
 
 " Toggle GitGutter line highlighting
-:nnoremap <leader>hl :ToggleGitGutterLineHighlights<CR>
+:nnoremap <leader>` :ToggleGitGutterLineHighlights<CR>
 
 " GitGutter Next hunk ~ hubba hubba
 :nnoremap <leader>n :GitGutterNextHunk<CR>
@@ -292,6 +291,20 @@ nmap <silent> <c-n> :NERDTreeToggle<CR>
 :nnoremap <leader>v :set paste!<CR>i
 au InsertLeave * set nopaste
 
+" Manually bind ListSnippets function, since setting option never worked...
+:nnoremap <leader><Space> :call UltiSnips_ListSnippets()<CR>
+
+" Split Window Creation Helpers
+:nnoremap <leader>9 :split<CR>
+:nnoremap <leader>( :split 
+:nnoremap <leader>0 :vsplit<CR>
+:nnoremap <leader>) :vsplit 
+
+" Split Windows Sizing Helpers ((in/de)crease by four)
+:nnoremap <leader>, <C-w>+
+:nnoremap <leader>. <C-w>-
+:nnoremap <leader>< <C-w><
+:nnoremap <leader>> <C-w>>
 
 " ========================================
 " Custom Abbreviations
