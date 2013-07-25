@@ -95,14 +95,13 @@ call pathogen#infect()
 
 " Set where backups go
 set backupdir=~/.vim/backup
-
 set noswapfile
 
 
 " Personal flavor
-
 set number
 set hidden
+
 
 " Indents
 set autoindent
@@ -113,14 +112,17 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 
+
 " Folding
 set foldmethod=indent
 set foldnestmax=3
 set nofoldenable
 set cmdheight=2
 
+
 filetype plugin on
 filetype indent on
+
 
 set nowrap
 set magic
@@ -128,6 +130,7 @@ set showmatch
 set noerrorbells
 set incsearch
 set hlsearch
+
 
 " Scrolling
 set scrolloff=10
@@ -158,6 +161,7 @@ autocmd WinLeave * setlocal nocursorline
 
 " Nerd Tree
 autocmd vimenter * if !argc() | NERDTree | endif
+let NERDTreeShowHidden=1
 
 
 " Command mode completion
