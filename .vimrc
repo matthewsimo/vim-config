@@ -310,8 +310,16 @@ au InsertLeave * set nopaste
 :nnoremap <leader>< <C-w><
 :nnoremap <leader>> <C-w>>
 
+
+
 " ========================================
 " Custom Abbreviations
 " ========================================
 
 
+" ========================================
+" Special File Type Support
+" ========================================
+
+" EJS Templates as html
+au BufNewFile,BufRead *.ejs set filetype=html
