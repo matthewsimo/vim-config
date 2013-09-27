@@ -226,6 +226,10 @@ endfunc
 command! C let @/=""
 
 
+" auto format JSON File
+command! F :%!python -m json.tool
+
+
 " Return to last edit position when opening files
 autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
