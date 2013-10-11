@@ -314,6 +314,20 @@ au InsertLeave * set nopaste
 :nnoremap <leader>< <C-w><
 :nnoremap <leader>> <C-w>>
 
+" Quote-Fu - handle quoting words quick and easy
+"   Quote Add Single
+:nnoremap <leader>qas ciw'<C-r>"'
+"   Quote Add Double
+:nnoremap <leader>qad ciw"<C-r>""
+"   Quote Remove Single
+:nnoremap <leader>qrs di'hPl2x
+"   Quote Remove Double
+:nnoremap <leader>qrd di"hPl2x
+"   Quote Change to Single
+:nnoremap <leader>qcs di"hPl2xhciw'<C-r>"'<esc>
+"   Quote Change to Double
+:nnoremap <leader>qcd di'hPl2xhciw"<C-r>""<esc>
+
 
 
 " ========================================
