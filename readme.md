@@ -16,4 +16,4 @@ See .gitmodules for submodules I'm using for [vim plugins](https://github.com/ma
 
 ### Notes:
 
-- I've add tern, it requires a npm install after the submodule is cloned, heads up.
+- I've add [tern](https://github.com/marijnh/tern_for_vim), it requires a npm install after the submodule is cloned, heads up.
