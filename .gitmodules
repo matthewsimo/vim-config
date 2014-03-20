@@ -67,3 +67,6 @@
 [submodule ".vim/angular-snippets"]
 	path = .vim/angular-snippets
 	url = git@github.com:matthewsimo/angular-vim-ultisnips.git
+[submodule ".vim/bundle/tern_for_vim"]
+	path = .vim/bundle/tern_for_vim
+	url = https://github.com/marijnh/tern_for_vim.git
