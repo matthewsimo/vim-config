@@ -214,8 +214,8 @@ set matchpairs+=<:>     " specially for html
 let g:UltiSnipsSnippetsDir="~/.vim/bundle/ultisnips/Ultisnips"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets", "angular-snippets"]
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<c-k>"
+let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 
 
   
