@@ -116,14 +116,14 @@ set autoindent
 set smartindent
 set smarttab
 set shiftwidth=2
-set softtabstop=2
 set tabstop=2
-set expandtab
+set noexpandtab
+"set softtabstop=2
 
 
 " Folding
 set foldmethod=indent
-set foldnestmax=3
+set foldnestmax=8
 set nofoldenable
 set cmdheight=2
 
@@ -335,6 +335,14 @@ au InsertLeave * set nopaste
 :nnoremap <leader>qcs di"hPl2xhciw'<C-r>"'<esc>
 "   Quote Change to Double
 :nnoremap <leader>qcd di'hPl2xhciw"<C-r>""<esc>
+
+
+"	Find, right before
+":nnoremap <leader>f fh
+
+
+" Copy to Clipboard
+vnoremap <leader>c :w !pbcopy<CR><CR>
 
 
 
