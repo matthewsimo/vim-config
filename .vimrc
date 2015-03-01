@@ -107,6 +107,7 @@ set noswapfile
 
 
 " Personal flavor
+set relativenumber 
 set number
 set hidden
 
