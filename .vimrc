@@ -361,3 +361,6 @@ vnoremap <leader>c :w !pbcopy<CR><CR>
 
 " EJS Templates as html
 au BufNewFile,BufRead *.ejs set filetype=html
+
+" Set jsx for .js files as well as .jsx
+let g:jsx_ext_required = 0
