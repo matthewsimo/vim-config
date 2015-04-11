@@ -276,6 +276,9 @@ vnoremap <silent> # :<C-U>
 " Edit Snippets for this file type
 :nnoremap <leader>es :split :UltiSnipsEdit<cr>
 
+" Remap keys used for tabs
+:nnoremap <leader>J J
+
 
 " Map some keys for easier tab usage
 map <S-h> :tabfirst<CR>
