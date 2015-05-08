@@ -17,3 +17,12 @@ See .gitmodules for submodules I'm using for [vim plugins](https://github.com/ma
 ### Notes:
 
 - I've add [tern](https://github.com/marijnh/tern_for_vim), it requires a `$ npm install` after the submodule is cloned, heads up.
+
+
+### Get started: 
+
+_From `~/`_
+- `git clone https://github.com/matthewsimo/vim-config.git && cd vim-config`
+- `git submodule init && git submodule update`
+- `make`
+- Done!
