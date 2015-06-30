@@ -80,7 +80,7 @@ if has("autocmd")
 else
 
   " always set autoindenting on
-  set autoindent		
+  set autoindent
 
 endif " has("autocmd")
 
@@ -107,7 +107,7 @@ set noswapfile
 
 
 " Personal flavor
-set relativenumber 
+set relativenumber
 set number
 set hidden
 
@@ -205,9 +205,9 @@ set viminfo^=%
 
 
 set laststatus=2
-let g:Powerline_symbols='fancy'
-let g:Powerline_theme='skwp'
-let g:Powerline_colorscheme='skwp'
+"let g:Powerline_symbols='fancy'
+"let g:Powerline_theme='skwp'
+"let g:Powerline_colorscheme='skwp'
 
 " Match settings
 set matchpairs+=<:>     " specially for html
@@ -219,7 +219,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-k>"
 let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 
 
-  
+
 " ========================================
 " Utility Functions & Custom Commands
 " ========================================
@@ -316,9 +316,9 @@ au InsertLeave * set nopaste
 
 " Split Window Creation Helpers
 :nnoremap <leader>9 :split<CR>
-:nnoremap <leader>( :split 
+:nnoremap <leader>( :split
 :nnoremap <leader>0 :vsplit<CR>
-:nnoremap <leader>) :vsplit 
+:nnoremap <leader>) :vsplit
 
 " Split Windows Sizing Helpers ((in/de)crease by four)
 :nnoremap <leader>, <C-w>+
