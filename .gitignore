@@ -2,3 +2,5 @@
 !.vim/backup/.gitkeep
 
 .vim/.netrwhist
+
+.DS_Store
