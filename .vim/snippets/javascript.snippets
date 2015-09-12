@@ -10,3 +10,30 @@ snippet scf "self calling function"
   $0
 })();
 endsnippet
+
+
+snippet comp "component"
+'use strict';
+
+import React from 'react';
+
+class ${1:component} extends React.Component {
+
+  constructor( props ) {
+    super( props );
+  }
+
+  static propTypes = {
+  }
+
+  render() {
+    return (
+      $0
+    );
+  }
+
+}
+
+export default $1;
+endsnippet
+
