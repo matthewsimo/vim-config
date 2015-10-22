@@ -363,6 +363,8 @@ au InsertLeave * set nopaste
 " Copy to Clipboard
 vnoremap <leader>c :w !pbcopy<CR><CR>
 
+" Pretty print JSON
+:nnoremap <leader>ppj :%!python -m json.tool<CR>
 
 
 " ========================================
