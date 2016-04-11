@@ -228,7 +228,7 @@ let g:airline#extensions#syntastic#enabled = 1
 set matchpairs+=<:>     " specially for html
 
 let g:UltiSnipsSnippetsDir="~/.vim/bundle/ultisnips/Ultisnips"
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets", "angular-snippets"]
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips", "angular-snippets"]
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-k>"
 let g:UltiSnipsJumpBackwardTrigger="<c-j>"
