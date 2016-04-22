@@ -227,11 +227,16 @@ let g:airline#extensions#syntastic#enabled = 1
 " Match settings
 set matchpairs+=<:>     " specially for html
 
-let g:UltiSnipsSnippetsDir="~/.vim/bundle/ultisnips/Ultisnips"
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips", "angular-snippets"]
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-k>"
-let g:UltiSnipsJumpBackwardTrigger="<c-j>"
+" UltiSnips Settings
+let g:UltiSnipsEditSplit="horizontal"
+let g:UltiSnipsSnippetsDir="~/.vim/bundle/snips/UltiSnips"
+let g:UltiSnipsSnippetsDirectories=["snips", "angular-snippets"]
+
+" UltiSnips Key Bindings
+let g:UltiSnipsListSnippets="<c-j>"
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 
 
@@ -289,7 +294,7 @@ vnoremap <silent> # :<C-U>
 
 
 " Edit Snippets for this file type
-:nnoremap <leader>es :split :UltiSnipsEdit<cr>
+:nnoremap <leader>es :UltiSnipsEdit<cr>
 
 " Remap keys used for tabs
 :nnoremap <leader>J J
@@ -310,7 +315,7 @@ nmap <silent> <c-n> :NERDTreeToggle<CR>
 :nnoremap <leader>ws :call DeleteTrailingWS()<CR>
 
 " Toggle GitGutter
-:nnoremap <leader><Tab> :ToggleGitGutter<CR>
+:nnoremap <leader>g :ToggleGitGutter<CR>
 
 " Toggle GitGutter line highlighting
 :nnoremap <leader>` :ToggleGitGutterLineHighlights<CR>
@@ -326,9 +331,6 @@ nmap <silent> <c-n> :NERDTreeToggle<CR>
 :nnoremap <leader>v :set paste!<CR>i
 au InsertLeave * set nopaste
 
-" Manually bind ListSnippets function, since setting option never worked...
-:nnoremap <leader><Space> :call UltiSnips_ListSnippets()<CR>
-
 " Split Window Creation Helpers
 :nnoremap <leader>9 :split<CR>
 :nnoremap <leader>( :split
@@ -339,6 +341,7 @@ au InsertLeave * set nopaste
 :nnoremap <leader>, <C-w>+
 :nnoremap <leader>. <C-w>-
 :nnoremap <leader>< <C-w><
+:
 :nnoremap <leader>> <C-w>>
 
 " Quote-Fu - handle quoting words quick and easy
@@ -361,7 +364,7 @@ au InsertLeave * set nopaste
 
 
 " Copy to Clipboard
-vnoremap <leader>c :w !pbcopy<CR><CR>
+vnoremap <leader>c "*y
 
 " Pretty print JSON
 :nnoremap <leader>ppj :%!python -m json.tool<CR>
