@@ -1,0 +1,36 @@
+
+
+snippet ... "Elm Basic Pattern"
+import Html exposing (..)
+
+
+--
+-- MODEL
+
+type alias Model = { ${1:model} }
+
+
+--
+-- UPDATE
+
+type Msg
+	= Reset
+	| ${2:msg}
+
+update : Msg -> Model -> Model
+update msg model =
+  case msg of
+    Reset -> ${3:reset}
+    $2 -> ${4:msgCase}
+
+
+--
+-- VIEW
+
+view : Model -> Html Msg
+view model =
+  ${5:view}
+endsnippet
+
+
+# vim:ft=snippets:
