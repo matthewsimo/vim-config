@@ -230,7 +230,7 @@ set matchpairs+=<:>     " specially for html
 " UltiSnips Settings
 let g:UltiSnipsEditSplit="horizontal"
 let g:UltiSnipsSnippetsDir="~/.vim/bundle/snips/UltiSnips"
-let g:UltiSnipsSnippetsDirectories=["snips", "angular-snippets"]
+let g:UltiSnipsSnippetDirectories=["snips", "angular-snippets"]
 
 " UltiSnips Key Bindings
 let g:UltiSnipsListSnippets="<c-j>"
